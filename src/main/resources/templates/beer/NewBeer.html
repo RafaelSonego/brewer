@@ -1,6 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 	<body>
 		<h1>TEST THYMELEAF</h1>
 	</body>
+	
+	<form method="POST">
+		<span th:text="${message}"></span>
+		<br>
+		<label>SKU</label> 
+		<input type="text" name="sku">
+		<br />
+		<input type="submit" value="Save">
+	</form>
+
 </html>
