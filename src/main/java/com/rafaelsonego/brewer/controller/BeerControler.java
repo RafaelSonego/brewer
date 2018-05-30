@@ -15,7 +15,8 @@ import com.rafaelsonego.brewer.model.Beer;
 public class BeerControler {
 
 	@RequestMapping("/beer/new")
-	public String redirectNewBeer() {
+	public String redirectNewBeer(Model model) {
+		model.addAttribute(new Beer());
 		return "beer/NewBeer";
 	}
 
@@ -23,7 +24,7 @@ public class BeerControler {
 	public String newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("message", "Some Error!!!");
-			return "beer/NewBeer"; //Page
+			return "beer/NewBeer"; //Default is forward
 		}
 		attributes.addFlashAttribute("message","Success");
 		return "redirect:/beer/new"; //Mapping Controller
