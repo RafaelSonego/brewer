@@ -15,7 +15,8 @@ import com.rafaelsonego.brewer.model.Beer;
 public class BeerControler {
 
 	@RequestMapping("/beer/new")
-	public String redirectNewBeer() {
+	public String redirectNewBeer(Model model) {
+		model.addAttribute(new Beer());
 		return "beer/NewBeer";
 	}
 
