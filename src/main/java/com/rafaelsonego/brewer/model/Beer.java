@@ -7,13 +7,13 @@ import org.hibernate.validator.constraints.NotBlank;
 public class Beer {
 
 	//@NotEmpty Accept spaces
-	@NotBlank
+	@NotBlank(message = "Error SKU!!")
 	private String sku;
 	
-	@NotBlank
+	@NotBlank(message = "Error Name!!")
 	private String name;
 	
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 50, message = "Error Description!!")
 	private String description;
 
 	public String getSku() {
