@@ -14,20 +14,39 @@ import com.rafaelsonego.brewer.model.Beer;
 @Controller
 public class BeerControler {
 
+	/***
+	 * Redirect to templates/beer/NewBeer Page
+	 * @URL /beer/new
+	 * @RequestMethod GET
+	 * @param beer
+	 * @return /beer/NewBeer
+	 */
 	@RequestMapping("/beer/new")
-	public String redirectNewBeer(Model model) {
-		model.addAttribute(new Beer());
-		return "beer/NewBeer";
+	public String redirectNewBeer(Beer beer) {
+		return "beer/cadastro-produto";
 	}
 
+	/***
+	 * Create a new Beer
+	 * @RequestMethod GET
+	 * @param beer
+	 * @param result Necessary to Validate object with @Valid annotation
+	 * @param model
+	 * @param attributes
+	 * @return
+	 */
 	@RequestMapping(value = "/beer/new", method = RequestMethod.POST)
 	public String newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			model.addAttribute("message", "Some Error!!!");
-			return "beer/NewBeer"; //Default is forward
+			return redirectNewBeer(beer);
 		}
 		attributes.addFlashAttribute("message","Success");
 		return "redirect:/beer/new"; //Mapping Controller
 	}
 
+	@RequestMapping("/beer/test")
+	public String test(Beer beer) {
+		return "beer/cadastro-produto";
+	}
+	
 }
