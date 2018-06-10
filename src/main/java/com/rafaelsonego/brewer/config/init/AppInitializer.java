@@ -19,7 +19,7 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	}
 
 	/***
-	 * Configure the class with spring congiuration
+	 * Configure the class with Spring congiurations
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
