@@ -31,6 +31,10 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		this.applicationContext = applicationContext;
 	}
 
+	/***
+	 * Set enconding to spring ViewResolver
+	 * @return
+	 */
 	@Bean
 	public ViewResolver viewResolver() {
 		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
@@ -47,15 +51,22 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		return engine;
 	}
 
+	/***
+	 * Using to define where the pages will be created and the extension
+	 * @return
+	 */
 	private ITemplateResolver templateResolver() {
 		SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
 		resolver.setApplicationContext(applicationContext);
 		resolver.setPrefix("classpath:/templates/"); // Path of templates
-		resolver.setSuffix(".html");
+		resolver.setSuffix(".html"); //extension supported 
 		resolver.setTemplateMode(TemplateMode.HTML);
 		return resolver;
 	}
 
+	/***
+	 * Using to mappnig static files (css, js etc)
+	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
