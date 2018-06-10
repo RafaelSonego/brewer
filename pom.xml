@@ -29,7 +29,10 @@
 		<!-- Thymelead Version -->
 		<thymelead.version>3.0.9.RELEASE</thymelead.version>
 		
-		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version> 
+		<!-- Thymeleaf-layout-dialect -->
+		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
+
+		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
 	</properties>
 
 	<build>
@@ -42,7 +45,7 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
@@ -101,7 +104,14 @@
 			<version>${thymelead.version}</version>
 			<scope>compile</scope>
 		</dependency>
-		
+
+		<!-- https://mvnrepository.com/artifact/nz.net.ultraq.thymeleaf/thymeleaf-layout-dialect -->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-layout-dialect.version}</version>
+		</dependency>
+
 		<!-- Bean Validation / Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
