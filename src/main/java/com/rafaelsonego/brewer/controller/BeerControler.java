@@ -23,7 +23,7 @@ public class BeerControler {
 	 */
 	@RequestMapping("/beer/new")
 	public String redirectNewBeer(Beer beer) {
-		return "beer/cadastro-produto";
+		return "beer/new-beer";
 	}
 
 	/***
@@ -43,10 +43,4 @@ public class BeerControler {
 		attributes.addFlashAttribute("message","Success");
 		return "redirect:/beer/new"; //Mapping Controller
 	}
-
-	@RequestMapping("/beer/test")
-	public String test(Beer beer) {
-		return "beer/cadastro-produto";
-	}
-	
 }
