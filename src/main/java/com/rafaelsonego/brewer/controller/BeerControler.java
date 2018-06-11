@@ -43,4 +43,5 @@ public class BeerControler {
 		attributes.addFlashAttribute("message","Success");
 		return "redirect:/beer/new"; //Mapping Controller
 	}
+
 }
