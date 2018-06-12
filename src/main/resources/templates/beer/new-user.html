@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
+<head>
+<title>New User</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>New User</h1>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
+
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input id="name" type="text" class="form-control" />
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-8 form-group">
+						<label for="email">Email</label>
+						<input id="email" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="birthday">Birthday</label>
+						<input id="birthday" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="address">Address</label>
+						<input id="address" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="number">Number</label>
+						<input id="number" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="unit">Unit</label>
+						<input id="unit" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="password">Password</label>
+						<input id="password" type="password" class="form-control" placeholder="Password" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="confirmPassword">Confirm your Password</label>
+						<input id="confirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label class="form-check-label" for="status">Status</label>
+						<div>
+							<label class="checkbox-inline"> <input type="checkbox" id="status" value=""> Active
+							</label>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label for="group">Groups</label>
+					<div>
+						<label class="checkbox-inline"> <input type="checkbox" value=""> Administrator </label> 
+						<label class="checkbox-inline"> <input type="checkbox" value=""> Vendor </label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+
+</html>
