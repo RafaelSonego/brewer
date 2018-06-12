@@ -2,8 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
 <head>
-<title>New User</title>
+	<title>New User</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}" />
 </head>
+
 <body>
 	<section layout:fragment="content">
 		<div class="page-header">
@@ -65,10 +68,10 @@
 					</div>
 
 					<div class="col-sm-4 form-group">
-						<label class="form-check-label" for="status">Status</label>
+						<label class="control-label" for="status">Status</label>
 						<div>
-							<label class="checkbox-inline"> <input type="checkbox" id="status" value=""> Active
-							</label>
+							<input type="checkbox" class="js-status" data-size="small" data-off-color="danger" 
+								data-on-text="Active" data-off-text="Inactive">
 						</div>
 					</div>
 
@@ -89,5 +92,12 @@
 		</div>
 	</section>
 </body>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+	<script>
+		$('.js-status').bootstrapSwitch();
+	</script>
+</th:block>
 
 </html>
