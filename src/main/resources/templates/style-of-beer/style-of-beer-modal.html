@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<!-- Modal -->
+	<div class="modal fade" id="style-of-beer-modal" tabindex="-1" role="dialog" th:fragment="modal">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Style of Beer</h5>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="nameStyle">Name</label>
+							<div class="col-sm-10">
+								<input id="nameStyle" type="text" class="form-control" autofocus="autofocus">
+							</div>
+						</div>
+					</form>
+					<button type="button" class="btn btn-primary">Save</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

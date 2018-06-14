@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
+<head>
+	<title>New User</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/bootstrap-switch.min.css}" />
+</head>
+
+<body>
+	<section layout:fragment="content">
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>New User</h1>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
+
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input id="name" type="text" class="form-control" />
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-8 form-group">
+						<label for="email">Email</label>
+						<input id="email" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="birthday">Birthday</label>
+						<input id="birthday" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="address">Address</label>
+						<input id="address" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="number">Number</label>
+						<input id="number" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="unit">Unit</label>
+						<input id="unit" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="password">Password</label>
+						<input id="password" type="password" class="form-control" placeholder="Password" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="confirmPassword">Confirm your Password</label>
+						<input id="confirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label class="control-label" for="status">Status</label>
+						<div>
+							<input type="checkbox" class="js-status" data-size="small" data-off-color="danger" 
+								data-on-text="Active" data-off-text="Inactive">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="form-group">
+					<label for="group">Groups</label>
+					<div>
+						<label class="checkbox-inline"> <input type="checkbox" value=""> Administrator </label> 
+						<label class="checkbox-inline"> <input type="checkbox" value=""> Vendor </label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+
+<th:block layout:fragment="javascript-extra">
+	<script th:src="@{/javascripts/vendors/bootstrap-switch.min.js}"></script>
+	<script>
+		$('.js-status').bootstrapSwitch();
+	</script>
+</th:block>
+
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
+<head>
+<title>New Client</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>New Client</h1>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
+
+				<div class="form-group">
+					<label for="name">Name</label>
+					<input id="name" type="text" class="form-control" />
+				</div>
+
+				<div class="row">
+
+					<div class="col-lg-4 col-sm-6 form-group">
+						<label for="origin">Type of Client</label>
+						<div>
+							<div class="radio radio-inline">
+								<input type="radio" id="origin" name="origin">
+								<label>Civil</label>
+							</div>
+							<div class="radio radio-inline">
+								<input type="radio" id="origin" name="origin">
+								<label>Legal Person</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-8 form-group">
+						<label for="clientDocument">CPF/CNPJ</label>
+						<input id="clientDocument" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="cellPhone">Cell Phone</label>
+						<input id="cellPhone" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-8 form-group">
+						<label for="email">Email</label>
+						<input id="email" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="address">Address</label>
+						<input id="address" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="number">Number</label>
+						<input id="number" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="unit">Unit</label>
+						<input id="unit" type="text" class="form-control" />
+					</div>
+
+				</div>
+
+				<div class="row">
+
+					<div class="col-sm-4 form-group">
+						<label for="zipCode">Zip Code</label>
+						<input id="zipCode" type="text" class="form-control" />
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="state">State</label>
+						<select id="state" class="form-control">
+							<option value="">Select</option>
+						</select>
+					</div>
+
+					<div class="col-sm-4 form-group">
+						<label for="province">Province</label>
+						<select id="province" class="form-control">
+							<option value="">Select</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<button class="btn  btn-primary" type="submit">Save</button>
+				</div>
+			</form>
+		</div>
+	</section>
+</body>
+
+</html>
