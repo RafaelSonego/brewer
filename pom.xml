@@ -28,11 +28,19 @@
 
 		<!-- Thymelead Version -->
 		<thymelead.version>3.0.9.RELEASE</thymelead.version>
-		
-		<!-- Thymeleaf-layout-dialect -->
+
+		<!-- Thymeleaf layout dialect Version -->
 		<thymeleaf-layout-dialect.version>2.3.0</thymeleaf-layout-dialect.version>
 
+		<!-- Hibernate validator Bean Version -->
 		<hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+
+		<!-- log4j Version -->
+		<log4j-version>2.11.0</log4j-version>
+
+		<!-- jcl-over-slf4j Version -->
+		<jcl-over-slf4j-version>1.7.25</jcl-over-slf4j-version>
+
 	</properties>
 
 	<build>
@@ -46,17 +54,17 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.eclipse.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>9.3.7.v20160115</version>
-				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<webApp>
-						<contextPath>/brewer</contextPath>
-					</webApp>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.eclipse.jetty</groupId> -->
+<!-- 				<artifactId>jetty-maven-plugin</artifactId> -->
+<!-- 				<version>${jetty-version}</version> -->
+<!-- 				<configuration> -->
+<!-- 					<scanIntervalSeconds>10</scanIntervalSeconds> -->
+<!-- 					<webApp> -->
+<!-- 						<contextPath>/brewer</contextPath> -->
+<!-- 					</webApp> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 
@@ -79,6 +87,12 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-logging</groupId>
+					<artifactId>commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- Servlet -->
@@ -118,6 +132,34 @@
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${log4j-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log4j-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log4j-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.slf4j/jcl-over-slf4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>${jcl-over-slf4j-version}</version>
 		</dependency>
 
 	</dependencies>
