@@ -2,6 +2,8 @@ package com.rafaelsonego.brewer.controller;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,8 @@ import com.rafaelsonego.brewer.model.Beer;
 @Controller
 public class BeerControler {
 
+	private static final Logger logger = LoggerFactory.getLogger(BeerControler.class);
+	
 	/***
 	 * Redirect to templates/beer/NewBeer Page
 	 * @URL /beer/new
