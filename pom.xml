@@ -40,6 +40,9 @@
 
 		<!-- jcl-over-slf4j Version -->
 		<jcl-over-slf4j-version>1.7.25</jcl-over-slf4j-version>
+		
+		<!-- JPA / hibernate Version -->
+		<hibernate-version>5.2.16.Final</hibernate-version>
 
 	</properties>
 
@@ -54,17 +57,17 @@
 				</configuration>
 			</plugin>
 
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.eclipse.jetty</groupId> -->
-<!-- 				<artifactId>jetty-maven-plugin</artifactId> -->
-<!-- 				<version>${jetty-version}</version> -->
-<!-- 				<configuration> -->
-<!-- 					<scanIntervalSeconds>10</scanIntervalSeconds> -->
-<!-- 					<webApp> -->
-<!-- 						<contextPath>/brewer</contextPath> -->
-<!-- 					</webApp> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.eclipse.jetty</groupId> -->
+			<!-- <artifactId>jetty-maven-plugin</artifactId> -->
+			<!-- <version>${jetty-version}</version> -->
+			<!-- <configuration> -->
+			<!-- <scanIntervalSeconds>10</scanIntervalSeconds> -->
+			<!-- <webApp> -->
+			<!-- <contextPath>/brewer</contextPath> -->
+			<!-- </webApp> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 		</plugins>
 	</build>
 
@@ -160,6 +163,20 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>
 			<version>${jcl-over-slf4j-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-java8 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-java8</artifactId>
+			<version>${hibernate-version}</version>
 		</dependency>
 
 	</dependencies>
