@@ -40,9 +40,15 @@
 
 		<!-- jcl-over-slf4j Version -->
 		<jcl-over-slf4j-version>1.7.25</jcl-over-slf4j-version>
-		
+
 		<!-- JPA / hibernate Version -->
 		<hibernate-version>5.2.16.Final</hibernate-version>
+
+		<!-- Mysql Connector Version -->
+		<mysql-conector-version>5.1.46</mysql-conector-version>
+
+		<!-- Flayway Plugin Version -->
+		<flyway-plugin-version>5.1.1</flyway-plugin-version>
 
 	</properties>
 
@@ -54,6 +60,15 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-plugin-version}</version>
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
 
@@ -178,6 +193,14 @@
 			<artifactId>hibernate-java8</artifactId>
 			<version>${hibernate-version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-conector-version}</version>
+		</dependency>
+
 
 	</dependencies>
 

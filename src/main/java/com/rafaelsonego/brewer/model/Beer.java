@@ -43,7 +43,7 @@ public class Beer {
 
 	private BigDecimal commission;
 
-	private Integer stock;
+	private Integer inventory;
 
 	@Enumerated(EnumType.STRING)
 	private Origin origin;
@@ -117,12 +117,12 @@ public class Beer {
 		this.commission = commission;
 	}
 
-	public Integer getStock() {
-		return stock;
+	public Integer getInventory() {
+		return inventory;
 	}
 
-	public void setStock(Integer stock) {
-		this.stock = stock;
+	public void setInventory(Integer stock) {
+		this.inventory = stock;
 	}
 
 	public Origin getOrigin() {
