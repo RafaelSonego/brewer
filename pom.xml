@@ -50,6 +50,8 @@
 		<!-- Flayway Plugin Version -->
 		<flyway-plugin-version>5.1.1</flyway-plugin-version>
 
+		<!-- Spring Data JPA Version -->
+		<spring-data-version>1.10.11.RELEASE</spring-data-version>
 	</properties>
 
 	<build>
@@ -62,7 +64,8 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-
+			<!-- Goals: flyway:migrate Parameters: name: flyway.user value: root name: 
+				flyway.password value: root name: flyway.url value: jdbc:mysql://localhost:3306/brewer -->
 			<plugin>
 				<groupId>org.flywaydb</groupId>
 				<artifactId>flyway-maven-plugin</artifactId>
@@ -71,18 +74,9 @@
 					<driver>com.mysql.jdbc.Driver</driver>
 				</configuration>
 			</plugin>
-
-			<!-- <plugin> -->
-			<!-- <groupId>org.eclipse.jetty</groupId> -->
-			<!-- <artifactId>jetty-maven-plugin</artifactId> -->
-			<!-- <version>${jetty-version}</version> -->
-			<!-- <configuration> -->
-			<!-- <scanIntervalSeconds>10</scanIntervalSeconds> -->
-			<!-- <webApp> -->
-			<!-- <contextPath>/brewer</contextPath> -->
-			<!-- </webApp> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			<!-- <plugin> <groupId>org.eclipse.jetty</groupId> <artifactId>jetty-maven-plugin</artifactId> 
+				<version>${jetty-version}</version> <configuration> <scanIntervalSeconds>10</scanIntervalSeconds> 
+				<webApp> <contextPath>/brewer</contextPath> </webApp> </configuration> </plugin> -->
 		</plugins>
 	</build>
 
@@ -201,6 +195,12 @@
 			<version>${mysql-conector-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-jpa</artifactId>
+			<version>${spring-data-version}</version>
+		</dependency>
 
 	</dependencies>
 
