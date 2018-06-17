@@ -5,26 +5,28 @@ import javax.servlet.Filter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.rafaelsonego.brewer.config.JPAConfig;
 import com.rafaelsonego.brewer.config.WebConfig;
 
 /***
- * @author rafael 
- * Configure DispatchServlet
+ * @author rafael Configure DispatchServlet
  */
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
+	/***
+	 * Root configure is always started first before Servlet Config
+	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return null;
+		return new Class<?>[] { JPAConfig.class };
 	}
 
 	/***
-	 * Configure the class with Spring congiurations
+	 * Configure the class with Spring configurations for Servlets
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		// Define the class with all configuration
-		return new Class<?>[] { WebConfig.class };
+		return new Class<?>[] { WebConfig.class }; // Define the class with all configuration
 	}
 
 	/***
@@ -34,13 +36,13 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
-	
+
 	@Override
 	protected Filter[] getServletFilters() {
 		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
-		return new Filter[] {characterEncodingFilter};
+		return new Filter[] { characterEncodingFilter };
 	}
 
 }
