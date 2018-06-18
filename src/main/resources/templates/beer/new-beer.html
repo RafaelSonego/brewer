@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
 <head>
-	<title>New Beer</title>
+<title>New Beer</title>
 </head>
 <body>
 	<section layout:fragment="content">
@@ -49,7 +49,8 @@
 						<label for="beerStyle">Style</label>
 						<div class="bw-field-action">
 							<select id="beerStyle" class="form-control">
-								<option value="">Select</option>
+								<option value="">Select a Style</option>
+								<option th:each="style : ${listStyle}" th:value="${style.id}" th:text="${style.name}"></option>
 							</select>
 							<div class="bw-field-action__icon">
 								<a href="#" data-toggle="modal" data-target="#style-of-beer-modal">
@@ -60,9 +61,10 @@
 					</div>
 
 					<div class="col-sm-3 form-group">
-						<label for="taste">Select a Taste</label>
+						<label for="taste">Taste</label>
 						<select id="taste" class="form-control">
-							<option value="">Select</option>
+							<option value="">Select a Taste</option>
+							<option th:each="taste : ${listTaste}" th:value="${taste}" th:text="${taste.description}"></option>
 						</select>
 					</div>
 
@@ -77,14 +79,12 @@
 					<div class="col-lg-3 col-sm-6 form-group">
 						<label for="origin">Origin</label>
 						<div>
-							<div class="radio radio-inline">
-								<input type="radio" id="origin" name="origin">
-								<label>National</label>
-							</div>
-							<div class="radio radio-inline">
-								<input type="radio" id="origin" name="origin">
-								<label>International</label>
-							</div>
+							<th:block th:each="origin : ${listOrigin}">
+								<div class="radio radio-inline">
+									<input type="radio" th:id="|id_${origin}|" name="${origin.description}" th:value="${origin}">
+									<label th:for="|id_${origin}|" th:text="${origin.description}"></label>
+								</div>
+							</th:block>
 						</div>
 					</div>
 				</div>
@@ -118,9 +118,9 @@
 
 			</form>
 		</div>
-		
+
 		<div th:replace="style-of-beer/style-of-beer-modal :: modal"></div>
-		
+
 	</section>
 </body>
 </html>
