@@ -14,13 +14,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.rafaelsonego.brewer.model.Beer;
 import com.rafaelsonego.brewer.model.Origin;
 import com.rafaelsonego.brewer.model.Taste;
-import com.rafaelsonego.brewer.repository.BeerStyles;
+import com.rafaelsonego.brewer.repository.BeerStyleRepository;
 
 @Controller
 public class BeerControler {
 
 	@Autowired
-	private BeerStyles beerStyles;
+	private BeerStyleRepository beerStyleRepository;
 	
 	/***
 	 * Redirect to templates/beer/NewBeer Page
@@ -34,7 +34,7 @@ public class BeerControler {
 	public ModelAndView newBeer(Beer beer) {
 		ModelAndView mv = new ModelAndView("beer/new-beer");
 		mv.addObject("listTaste", Taste.values());
-		mv.addObject("listStyle", beerStyles.findAll());
+		mv.addObject("listStyle", beerStyleRepository.findAll());
 		mv.addObject("listOrigin", Origin.values());
 		return mv;
 	}
@@ -52,12 +52,11 @@ public class BeerControler {
 	 */
 	@RequestMapping(value = "/beer/new", method = RequestMethod.POST)
 	public ModelAndView newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
-		ModelAndView mv = new ModelAndView("redirect:/beer/new");
 		if (result.hasErrors()) {
 			return newBeer(beer);
 		}
 		attributes.addFlashAttribute("message", "Success");
-		return mv;
+		return new ModelAndView("redirect:/beer/new");
 	}
 
 }
