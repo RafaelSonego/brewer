@@ -15,12 +15,16 @@ import com.rafaelsonego.brewer.model.Beer;
 import com.rafaelsonego.brewer.model.Origin;
 import com.rafaelsonego.brewer.model.Taste;
 import com.rafaelsonego.brewer.repository.BeerStyleRepository;
+import com.rafaelsonego.brewer.service.BeerService;
 
 @Controller
 public class BeerControler {
 
 	@Autowired
 	private BeerStyleRepository beerStyleRepository;
+	
+	@Autowired
+	private BeerService beerService;
 	
 	/***
 	 * Redirect to templates/beer/NewBeer Page
@@ -55,6 +59,8 @@ public class BeerControler {
 		if (result.hasErrors()) {
 			return newBeer(beer);
 		}
+		
+		beerService.save(beer);
 		attributes.addFlashAttribute("message", "Success");
 		return new ModelAndView("redirect:/beer/new");
 	}
