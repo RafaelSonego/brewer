@@ -12,9 +12,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+
+import com.rafaelsonego.brewer.validation.BeerName;
 
 @Entity
 @Table(name = "beer")
@@ -24,9 +27,11 @@ public class Beer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Pattern(regexp="([a-zA-Z]{2}\\d{4})?", message="Correct standard XX9999")
 	@NotBlank(message = "Error SKU!!")
 	private String sku;
 
+	@BeerName
 	@NotBlank(message = "Error Name!!")
 	private String name;
 

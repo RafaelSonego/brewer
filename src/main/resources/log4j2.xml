@@ -15,8 +15,10 @@
 	<!-- DEBUG -->
 	<!-- TRACE -->
 	<!-- ALL -->
-    <Root level="WARN">
+    <Root level="error">
       <AppenderRef ref="Console"/>
     </Root>
+    <logger name="com.rafaelsonego.brewer.controller" level="error"></logger>
+    <logger name="org.hibernate.SQL" level="debug"></logger>
   </Loggers>
 </Configuration>
