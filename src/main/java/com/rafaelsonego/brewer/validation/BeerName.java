@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 @Target({ ElementType.FIELD, ElementType.METHOD, ElementType.ANNOTATION_TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
-@Pattern(regexp = "([a-zA-Z])?")
+@Pattern(regexp = "(^[a-zA-Z\\s]*$)?")
 public @interface BeerName {
 
 	@OverridesAttribute(constraint = Pattern.class, name="message")
