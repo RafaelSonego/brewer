@@ -15,17 +15,12 @@
 		</div>
 
 		<div class="container-fluid">
-
-			<!-- 				<div class="alert  alert-danger  alert-dismissible" role="alert"> -->
-			<!-- 					<button type="button" class="close" data-dismiss="alert" -->
-			<!-- 						aria-label="Close"> -->
-			<!-- 						<span aria-hidden="true">&times;</span> -->
-			<!-- 					</button> -->
-			<!-- 					<i class="fa  fa-exclamation-circle"></i> -->
-			<!-- 					Já existe um produto com o nome informado. -->
-			<!-- 				</div> -->
+		
+			<th:block th:include="fragment/messageSuccess"></th:block>
 
 			<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
+
+				<th:block th:include="fragment/messageErrorValidation"></th:block>
 
 				<div class="row">
 					<div class="col-sm-2  form-group">
@@ -41,7 +36,7 @@
 
 				<div class="form-group">
 					<label for="description">Description</label>
-					<textarea id="description" rows="3" class="form-control" th:field="*{description}" ></textarea>
+					<textarea id="description" rows="3" class="form-control" th:field="*{description}"></textarea>
 				</div>
 
 				<div class="row">
@@ -62,7 +57,7 @@
 
 					<div class="col-sm-3 form-group">
 						<label for="taste">Taste</label>
-						<select id="taste" class="form-control" th:field="*{taste}" >
+						<select id="taste" class="form-control" th:field="*{taste}">
 							<option value="">Select a Taste</option>
 							<option th:each="taste : ${listTaste}" th:value="${taste}" th:text="${taste.description}"></option>
 						</select>
@@ -81,7 +76,8 @@
 						<div>
 							<th:block th:each="origin : ${listOrigin}">
 								<div class="radio radio-inline">
-									<input type="radio" th:id="|id_${origin}|" name="${origin.description}" th:value="${origin}" th:field="*{origin}" >
+									<input type="radio" th:id="|id_${origin}|" name="${origin.description}" th:value="${origin}"
+										th:field="*{origin}">
 									<label th:for="|id_${origin}|" th:text="${origin.description}"></label>
 								</div>
 							</th:block>
