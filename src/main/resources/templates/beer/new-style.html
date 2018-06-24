@@ -12,12 +12,17 @@
 				<h1>New Style</h1>
 			</div>
 		</div>
-		<div class="container-fluid">
-			<form method="POST" th:object="${style}" class="form-vertical  js-form-loading">
 
-				<div class="form-group">
-					<label for="style">Style</label>
-					<input id="style" type="text" class="form-control" />
+		<th:block th:include="fragment/messageSuccess"></th:block>
+
+		<div class="container-fluid">
+			<form method="POST" th:object="${beerStyle}" class="form-vertical  js-form-loading">
+
+				<th:block th:include="fragment/messageErrorValidation"></th:block>
+
+				<div class="form-group" th:classappend="${#fields.hasErrors('name')}? has-error">
+					<label for="name" class="control-label">Style</label>
+					<input id="name" type="text" class="form-control" th:field="*{name}"  />
 				</div>
 
 				<div class="form-group">

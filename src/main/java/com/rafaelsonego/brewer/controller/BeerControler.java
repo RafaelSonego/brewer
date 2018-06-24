@@ -22,10 +22,10 @@ public class BeerControler {
 
 	@Autowired
 	private BeerStyleRepository beerStyleRepository;
-	
+
 	@Autowired
 	private BeerService beerService;
-	
+
 	/***
 	 * Redirect to templates/beer/NewBeer Page
 	 * 
@@ -35,7 +35,7 @@ public class BeerControler {
 	 * @return /beer/NewBeer
 	 */
 	@RequestMapping("/beer/new")
-	public ModelAndView newBeer(Beer beer) {
+	public ModelAndView redirectNewBeer(Beer beer) {
 		ModelAndView mv = new ModelAndView("beer/new-beer");
 		mv.addObject("listTaste", Taste.values());
 		mv.addObject("listStyle", beerStyleRepository.findAll());
@@ -57,9 +57,9 @@ public class BeerControler {
 	@RequestMapping(value = "/beer/new", method = RequestMethod.POST)
 	public ModelAndView newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			return newBeer(beer);
+			return redirectNewBeer(beer);
 		}
-		
+
 		beerService.save(beer);
 		attributes.addFlashAttribute("message", "Success");
 		return new ModelAndView("redirect:/beer/new");

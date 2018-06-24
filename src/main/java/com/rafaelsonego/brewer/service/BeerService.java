@@ -11,11 +11,11 @@ import com.rafaelsonego.brewer.repository.BeerRepository;
 public class BeerService {
 
 	@Autowired
-	private BeerRepository repository;
+	private BeerRepository beerRepository;
 
 	@Transactional
 	public void save(Beer beer) {
-		repository.save(beer);
+		beerRepository.save(beer);
 	}
 
 }
