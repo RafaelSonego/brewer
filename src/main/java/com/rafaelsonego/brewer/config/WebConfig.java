@@ -79,7 +79,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	}
 
 	/***
-	 * Using to mappnig static files (css, js etc)
+	 * Using to mapping static files (css, js etc)
 	 */
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

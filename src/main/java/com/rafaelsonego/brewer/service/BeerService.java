@@ -26,7 +26,7 @@ public class BeerService {
 	private void validateBeerAlreadyExists(Beer beer) {
 		Optional<Beer> beerOptional = beerRepository.findByNameIgnoreCaseOrSkuIgnoreCase(beer.getName(), beer.getSku());
 		if (beerOptional.isPresent()) {
-			throw new BeerExpetion("Beer alredy exists with the name: " + beer.getName());
+			throw new BeerExpetion("Beer alredy exists with the Name: " + beer.getName() + " or SKU: " + beer.getSku());
 		}
 	}
 

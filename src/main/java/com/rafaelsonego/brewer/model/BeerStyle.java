@@ -27,7 +27,7 @@ public class BeerStyle implements Serializable {
 
 	@NotBlank(message = "Name: Field is required")
 	@TextFieldValidation
-	@Size(max = 100, min = 5, message = "Name: Size between 5 and 100 characters")
+	@Size(max = 100, min = 3, message = "Name: Size between 3 and 100 characters")
 	private String name;
 
 	/***

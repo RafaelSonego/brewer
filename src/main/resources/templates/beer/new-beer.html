@@ -118,5 +118,10 @@
 		<div th:replace="style-of-beer/style-of-beer-modal :: modal"></div>
 
 	</section>
+	
+	<th:block layout:fragment="javascript-extra">
+		<script th:src="@{/javascripts/beerStyle.newBeerStyle.js}"></script>
+	</th:block>
+	
 </body>
 </html>

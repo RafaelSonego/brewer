@@ -17,9 +17,9 @@ public class BeerStyleService {
 	private BeerStyleRepository beerStyleRepository;
 	
 	@Transactional
-	public void save(BeerStyle beerStyle){
+	public BeerStyle save(BeerStyle beerStyle){
 		ValidateBeerStyleAlreadyExists(beerStyle);
-		beerStyleRepository.save(beerStyle);
+		return beerStyleRepository.saveAndFlush(beerStyle);
 	}
 
 	private void ValidateBeerStyleAlreadyExists(BeerStyle beerStyle){

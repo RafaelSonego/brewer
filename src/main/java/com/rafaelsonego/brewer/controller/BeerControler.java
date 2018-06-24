@@ -4,7 +4,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +16,6 @@ import com.rafaelsonego.brewer.model.Taste;
 import com.rafaelsonego.brewer.repository.BeerStyleRepository;
 import com.rafaelsonego.brewer.service.BeerService;
 import com.rafaelsonego.brewer.service.exception.BeerExpetion;
-import com.rafaelsonego.brewer.service.exception.BeerStyleException;
 
 @Controller
 public class BeerControler {
@@ -57,7 +55,7 @@ public class BeerControler {
 	 * @return
 	 */
 	@RequestMapping(value = "/beer/new", method = RequestMethod.POST)
-	public ModelAndView newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
+	public ModelAndView newBeer(@Valid Beer beer, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return redirectNewBeer(beer);
 		}
