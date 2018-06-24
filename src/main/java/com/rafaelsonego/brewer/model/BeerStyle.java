@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import com.rafaelsonego.brewer.validations.TextFieldValidation;
 
 @Entity
 @Table(name = "beerstyle")
@@ -20,10 +25,14 @@ public class BeerStyle implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotBlank(message = "Name: Field is required")
+	@TextFieldValidation
+	@Size(max = 100, min = 3, message = "Name: Size between 3 and 100 characters")
 	private String name;
 
 	/***
 	 * One style have many beers
+	 * 
 	 * @OneToMany(mappedBy = "beerStyle"): beerStyle is the name of the attribute inside class Beer
 	 */
 	@OneToMany(mappedBy = "beerStyle")

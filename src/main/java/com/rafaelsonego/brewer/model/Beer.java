@@ -12,12 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.rafaelsonego.brewer.validation.BeerName;
+import com.rafaelsonego.brewer.validations.TextFieldValidation;
 
 @Entity
 @Table(name = "beer")
@@ -27,32 +31,44 @@ public class Beer {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Pattern(regexp="([a-zA-Z]{2}\\d{4})?", message="Correct standard XX9999")
-	@NotBlank(message = "Error SKU!!")
+	@Pattern(regexp = "([a-zA-Z]{2}\\d{4})?", message = "SKU: Correct standard XX9999")
+	@NotBlank(message = "SKU: Field is required")
 	private String sku;
 
-	@BeerName
-	@NotBlank(message = "Error Name!!")
+	@TextFieldValidation
+	@NotBlank(message = "Name: Field is required")
 	private String name;
 
-	@Size(min = 1, max = 50, message = "Error Description!!")
+	@Size(min = 10, max = 500, message = "Description: Size between 10 and 500 characters")
+	@NotBlank(message = "Description: Field is required")
 	private String description;
 
+	@NotNull(message = "Value: Field is required")
+	@DecimalMin(value = "2.00", message = "Minimum value of a beer is 2.00")
+	@DecimalMax(value = "20.00", message = "Maximum value of a beer is 20.00")
 	private BigDecimal value;
 
 	/***
 	 * @Column(name = "alcohol_percent"): alcohol_percent is a name of the column on the database
 	 */
 	@Column(name = "alcohol_percent")
+	@NotNull(message="Alcohol Percent: Field is required")
+	@DecimalMax(value = "100.00", message = "Maximum alcohol percent is 100.00")
 	private BigDecimal alcoholPercent;
 
+	@NotNull(message="Comission: Field is required")
+	@DecimalMax(value = "100.00", message = "Maximum value of the comission is 100.00")
 	private BigDecimal commission;
 
+	@NotNull(message="Inventory: Field is required")
+	@Max(value = 10000, message = "Maximum value of the inventory is 1000.00")
 	private Integer inventory;
 
+	@NotNull(message="Origin: Field is required")
 	@Enumerated(EnumType.STRING)
 	private Origin origin;
 
+	@NotNull(message="Taste: Field is required")
 	@Enumerated(EnumType.STRING)
 	private Taste taste;
 
@@ -62,6 +78,7 @@ public class Beer {
 	 */
 	@ManyToOne
 	@JoinColumn(name = "style_id")
+	@NotNull(message="Style: Field is required")
 	private BeerStyle beerStyle;
 
 	// *************** Getter and Setters ***************

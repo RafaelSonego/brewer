@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="container-fluid">
-		
+
 			<th:block th:include="fragment/messageSuccess"></th:block>
 
 			<form method="POST" th:object="${beer}" class="form-vertical  js-form-loading">
@@ -23,25 +23,25 @@
 				<th:block th:include="fragment/messageErrorValidation"></th:block>
 
 				<div class="row">
-					<div class="col-sm-2  form-group">
-						<label for="sku">SKU</label>
+					<div class="col-sm-2  form-group" th:classappend="${#fields.hasErrors('sku')}? has-error">
+						<label for="sku" class="control-label">SKU</label>
 						<input id="sku" type="text" class="form-control" th:field="*{sku}" />
 					</div>
 
-					<div class="col-sm-10  form-group">
-						<label for="name">Name</label>
+					<div class="col-sm-10  form-group" th:classappend="${#fields.hasErrors('name')}? has-error">
+						<label for="name" class="control-label">Name</label>
 						<input id="name" type="text" class="form-control" th:field="*{name}" />
 					</div>
 				</div>
 
-				<div class="form-group">
-					<label for="description">Description</label>
+				<div class="form-group" th:classappend="${#fields.hasErrors('description')}? has-error">
+					<label for="description" class="control-label">Description</label>
 					<textarea id="description" rows="3" class="form-control" th:field="*{description}"></textarea>
 				</div>
 
 				<div class="row">
-					<div class="col-sm-3 form-group">
-						<label for="beerStyle">Style</label>
+					<div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('beerStyle')}? has-error">
+						<label for="beerStyle" class="control-label">Style</label>
 						<div class="bw-field-action">
 							<select id="beerStyle" class="form-control" th:field="*{beerStyle}">
 								<option value="">Select a Style</option>
@@ -55,30 +55,30 @@
 						</div>
 					</div>
 
-					<div class="col-sm-3 form-group">
-						<label for="taste">Taste</label>
+					<div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('taste')}? has-error">
+						<label for="taste" class="control-label">Taste</label>
 						<select id="taste" class="form-control" th:field="*{taste}">
 							<option value="">Select a Taste</option>
 							<option th:each="taste : ${listTaste}" th:value="${taste}" th:text="${taste.description}"></option>
 						</select>
 					</div>
 
-					<div class="col-sm-3 form-group">
-						<label for="alcoholPercent">Alcohol Percent</label>
+					<div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('alcoholPercent')}? has-error">
+						<label for="alcoholPercent" class="control-label">Alcohol Percent</label>
 						<div class="input-group">
 							<input id="alcoholPercent" type="text" class="form-control js-decimal" th:field="*{alcoholPercent}" />
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
 
-					<div class="col-lg-3 col-sm-6 form-group">
-						<label for="origin">Origin</label>
+					<div class="col-lg-3 col-sm-6 form-group"  th:classappend="${#fields.hasErrors('origin')}? has-error">
+						<label for="origin" class="control-label">Origin</label>
 						<div>
 							<th:block th:each="origin : ${listOrigin}">
 								<div class="radio radio-inline">
 									<input type="radio" th:id="|id_${origin}|" name="${origin.description}" th:value="${origin}"
 										th:field="*{origin}">
-									<label th:for="|id_${origin}|" th:text="${origin.description}"></label>
+									<label th:for="|id_${origin}|" th:text="${origin.description}" class="control-label"></label>
 								</div>
 							</th:block>
 						</div>
@@ -86,24 +86,24 @@
 				</div>
 
 				<div class="row">
-					<div class="col-sm-3 form-group">
-						<label for="value">Value</label>
+					<div class="col-sm-3 form-group"  th:classappend="${#fields.hasErrors('value')}? has-error">
+						<label for="value" class="control-label">Value</label>
 						<div class="input-group">
 							<div class="input-group-addon">$</div>
 							<input id="value" type="text" class="form-control js-decimal" th:field="*{value}" />
 						</div>
 					</div>
 
-					<div class="col-sm-3 form-group">
-						<label for="commission">Commission</label>
+					<div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('commission')}? has-error">
+						<label for="commission" class="control-label">Commission</label>
 						<div class="input-group">
 							<input id="commission" type="text" class="form-control js-decimal" th:field="*{commission}" />
 							<div class="input-group-addon">%</div>
 						</div>
 					</div>
 
-					<div class="col-sm-3 form-group">
-						<label for="inventory">Inventory</label>
+					<div class="col-sm-3 form-group" th:classappend="${#fields.hasErrors('inventory')}? has-error">
+						<label for="inventory" class="control-label">Inventory</label>
 						<input id="inventory" type="text" class="form-control js-plain" th:field="*{inventory}" />
 					</div>
 				</div>
@@ -118,5 +118,10 @@
 		<div th:replace="style-of-beer/style-of-beer-modal :: modal"></div>
 
 	</section>
+	
+	<th:block layout:fragment="javascript-extra">
+		<script th:src="@{/javascripts/beerStyle.newBeerStyle.js}"></script>
+	</th:block>
+	
 </body>
 </html>

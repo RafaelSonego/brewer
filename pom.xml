@@ -52,6 +52,9 @@
 
 		<!-- Spring Data JPA Version -->
 		<spring-data-version>1.10.11.RELEASE</spring-data-version>
+
+		<!-- Jackson Core Version -->
+		<jackson-core-version>2.7.5</jackson-core-version>
 	</properties>
 
 	<build>
@@ -200,6 +203,13 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring-data-version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-core-version}</version>
 		</dependency>
 
 	</dependencies>

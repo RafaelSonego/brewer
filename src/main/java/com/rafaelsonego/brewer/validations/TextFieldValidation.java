@@ -1,4 +1,4 @@
-package com.rafaelsonego.brewer.validation;
+package com.rafaelsonego.brewer.validations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -14,10 +14,10 @@ import javax.validation.constraints.Pattern;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {})
 @Pattern(regexp = "(^[a-zA-Z\\s]*$)?")
-public @interface BeerName {
+public @interface TextFieldValidation {
 
 	@OverridesAttribute(constraint = Pattern.class, name="message")
-	String message() default "Name accepts only letters between A and Z";
+	String message() default "Accepts only letters between A and Z";
 	
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
