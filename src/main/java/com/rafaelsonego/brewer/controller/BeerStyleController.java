@@ -48,19 +48,15 @@ public class BeerStyleController {
 		return new ModelAndView("redirect:/style/new");
 	}
 
-	@RequestMapping(value="/new/modal", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value = "/new/modal", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> saveBeerStyleModal(@RequestBody @Valid BeerStyle beerStyle, BindingResult result) {
 		if (result.hasErrors()) {
 			return ResponseEntity.badRequest().body(result.getFieldError("name").getDefaultMessage());
 		}
-		try {
-			beerStyle = beerStyleService.save(beerStyle);
-		} catch (BeerStyleException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
+
+		beerStyle = beerStyleService.save(beerStyle);
 
 		return ResponseEntity.ok(beerStyle);
-				
 	}
 
 }
