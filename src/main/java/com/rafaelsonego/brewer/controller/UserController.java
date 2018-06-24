@@ -4,9 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 	
-	@RequestMapping("/user/new")
+	@RequestMapping("/new")
 	public String newUser() {
 		return "beer/new-user";
 	}

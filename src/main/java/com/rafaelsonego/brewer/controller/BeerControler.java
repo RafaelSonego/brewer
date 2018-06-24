@@ -18,6 +18,7 @@ import com.rafaelsonego.brewer.service.BeerService;
 import com.rafaelsonego.brewer.service.exception.BeerExpetion;
 
 @Controller
+@RequestMapping("/beer")
 public class BeerControler {
 
 	@Autowired
@@ -34,7 +35,7 @@ public class BeerControler {
 	 * @param beer
 	 * @return /beer/NewBeer
 	 */
-	@RequestMapping("/beer/new")
+	@RequestMapping("/new")
 	public ModelAndView redirectNewBeer(Beer beer) {
 		ModelAndView mv = new ModelAndView("beer/new-beer");
 		mv.addObject("listTaste", Taste.values());
@@ -54,7 +55,7 @@ public class BeerControler {
 	 * @param attributes
 	 * @return
 	 */
-	@RequestMapping(value = "/beer/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public ModelAndView newBeer(@Valid Beer beer, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return redirectNewBeer(beer);
