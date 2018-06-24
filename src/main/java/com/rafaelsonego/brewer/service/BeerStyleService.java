@@ -18,11 +18,11 @@ public class BeerStyleService {
 	
 	@Transactional
 	public void save(BeerStyle beerStyle){
-		beerStyleAlreadyExists(beerStyle);
+		ValidateBeerStyleAlreadyExists(beerStyle);
 		beerStyleRepository.save(beerStyle);
 	}
 
-	private void beerStyleAlreadyExists(BeerStyle beerStyle){
+	private void ValidateBeerStyleAlreadyExists(BeerStyle beerStyle){
 		Optional<BeerStyle> beerSetypeOptional = beerStyleRepository.findByNameIgnoreCase(beerStyle.getName());
 		if(beerSetypeOptional.isPresent()) {
 			throw new BeerStyleException("Style of beer alredy exists");

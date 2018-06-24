@@ -16,6 +16,8 @@ import com.rafaelsonego.brewer.model.Origin;
 import com.rafaelsonego.brewer.model.Taste;
 import com.rafaelsonego.brewer.repository.BeerStyleRepository;
 import com.rafaelsonego.brewer.service.BeerService;
+import com.rafaelsonego.brewer.service.exception.BeerExpetion;
+import com.rafaelsonego.brewer.service.exception.BeerStyleException;
 
 @Controller
 public class BeerControler {
@@ -60,7 +62,13 @@ public class BeerControler {
 			return redirectNewBeer(beer);
 		}
 
-		beerService.save(beer);
+		try {
+			beerService.save(beer);
+		} catch (BeerExpetion e) {
+			result.rejectValue("name", e.getMessage(), e.getMessage());
+			return redirectNewBeer(beer);
+		}
+
 		attributes.addFlashAttribute("message", "Success");
 		return new ModelAndView("redirect:/beer/new");
 	}
