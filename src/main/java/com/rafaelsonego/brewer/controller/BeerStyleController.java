@@ -19,19 +19,20 @@ import com.rafaelsonego.brewer.service.BeerStyleService;
 import com.rafaelsonego.brewer.service.exception.BeerStyleException;
 
 @Controller
+@RequestMapping("/style")
 public class BeerStyleController {
 
 	@Autowired
 	private BeerStyleService beerStyleService;
 
-	@RequestMapping("/style/new")
+	@RequestMapping("/new")
 	public ModelAndView redirectNewBeerStyle(BeerStyle beerStyle) {
 		ModelAndView mv = new ModelAndView("beer/new-style");
 		mv.addObject(beerStyle);
 		return mv;
 	}
 
-	@RequestMapping(value = "/style/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public ModelAndView newBeerStyle(@Valid BeerStyle beerStyle, BindingResult result, RedirectAttributes attributes) {
 		if (result.hasErrors()) {
 			return redirectNewBeerStyle(beerStyle);
@@ -47,19 +48,15 @@ public class BeerStyleController {
 		return new ModelAndView("redirect:/style/new");
 	}
 
-	@RequestMapping(value="/style/new/modal", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(value = "/new/modal", method = RequestMethod.POST, consumes = { MediaType.APPLICATION_JSON_VALUE })
 	public @ResponseBody ResponseEntity<?> saveBeerStyleModal(@RequestBody @Valid BeerStyle beerStyle, BindingResult result) {
 		if (result.hasErrors()) {
 			return ResponseEntity.badRequest().body(result.getFieldError("name").getDefaultMessage());
 		}
-		try {
-			beerStyle = beerStyleService.save(beerStyle);
-		} catch (BeerStyleException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
+
+		beerStyle = beerStyleService.save(beerStyle);
 
 		return ResponseEntity.ok(beerStyle);
-				
 	}
 
 }

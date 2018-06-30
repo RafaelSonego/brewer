@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
@@ -81,6 +83,12 @@ public class Beer {
 	@NotNull(message="Style: Field is required")
 	private BeerStyle beerStyle;
 
+	@PrePersist
+	@PreUpdate
+	private void prePersistUpdate() {
+		sku = sku.toUpperCase();
+	}
+	
 	// *************** Getter and Setters ***************
 
 	public Long getId() {
