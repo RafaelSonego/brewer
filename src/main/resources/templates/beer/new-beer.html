@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <!-- layout:decorator="layout/default-layout - Using the page: default-layout -->
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	xmlns:brewer="rafaelsonego.com" layout:decorator="layout/default-layout">
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:brewer="rafaelsonego.com"
+	layout:decorator="layout/default-layout">
 <head>
 <title>New Beer</title>
+
+<link rel="stylesheet" type="text/css" th:href="@{/stylesheets/vendors/upload.min.css}" />
+
 </head>
 <body>
 	<section layout:fragment="content">
@@ -109,6 +112,21 @@
 					</div>
 				</div>
 
+				<div class="row">
+					<div class="form-group  col-sm-12">
+						<label class="control-label">Photo</label>
+
+						<div id="upload-drop" class="bw-upload">
+							<i class="glyphicon  glyphicon-cloud-upload"></i>
+							<span>Arraste a foto aqui ou </span>
+							<a class="bw-upload-form-file">
+								selecione
+								<input id="upload-select" type="file" accept=".jpg,.jpeg,.png" />
+							</a>
+						</div>
+					</div>
+				</div>
+
 				<div class="form-group">
 					<button class="btn  btn-primary" type="submit">Save</button>
 				</div>
@@ -119,10 +137,27 @@
 		<div th:replace="style-of-beer/style-of-beer-modal :: modal"></div>
 
 	</section>
-	
+
 	<th:block layout:fragment="javascript-extra">
 		<script th:src="@{/javascripts/beerStyle.newBeerStyle.js}"></script>
-	</th:block>
+		<script th:src="@{/javascripts/vendors/uikit.min.js}"></script>
+		<script th:src="@{/javascripts/vendors/upload.min.js}"></script>
+
+		<script>
+			$(function() {
+				var settings = {
+						type: 'json',
+						filelimit: 1,
+						allow: '*.(jpg|jpeg|png)',
+						action: '/brewer/fotos'
+				};
+				
+				UIkit.uploadSelect($('#upload-select'), settings);
+				UIkit.uploadDrop($('#upload-drop'), settings);
+			});
+	</script>
 	
+	</th:block>
+
 </body>
 </html>
