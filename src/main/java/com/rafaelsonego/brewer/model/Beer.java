@@ -88,6 +88,12 @@ public class Beer {
 	private void prePersistUpdate() {
 		sku = sku.toUpperCase();
 	}
+
+	@Column(name = "content_type")
+	private String photoContentType;
+	
+	@Column(name = "photo")
+	private String photoName;
 	
 	// *************** Getter and Setters ***************
 
@@ -177,6 +183,22 @@ public class Beer {
 
 	public void setBeerStyle(BeerStyle beerStyle) {
 		this.beerStyle = beerStyle;
+	}
+	
+	public String getPhotoContentType() {
+		return photoContentType;
+	}
+
+	public void setPhotoContentType(String photoContentType) {
+		this.photoContentType = photoContentType;
+	}
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
 	}
 
 	@Override

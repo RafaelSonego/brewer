@@ -1,6 +1,8 @@
 package com.rafaelsonego.brewer.config.init;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -15,7 +17,7 @@ import com.rafaelsonego.brewer.config.WebConfig;
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	/***
-	 * Root configure is always started first before Servlet Config
+	 * This configuration is always started before Servlet Config. 
 	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -44,6 +46,11 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		characterEncodingFilter.setEncoding("UTF-8");
 		characterEncodingFilter.setForceEncoding(true);
 		return new Filter[] { characterEncodingFilter };
+	}
+	
+	@Override
+	protected void customizeRegistration(Dynamic registration) {
+		registration.setMultipartConfig(new MultipartConfigElement("")); //Empty string means de spring will define de path location
 	}
 
 }
