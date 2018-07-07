@@ -27,6 +27,7 @@ public class JPAConfig {
 	public DataSource dataSource() {
 		JndiDataSourceLookup dataSourceLookup = new JndiDataSourceLookup();
 		dataSourceLookup.setResourceRef(true);
+		//Was defined on META-INF/context.xml
 		return dataSourceLookup.getDataSource("jdbc/brewerDB");
 	}
 
