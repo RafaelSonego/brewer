@@ -63,6 +63,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 		
 		//Used to thymeleaf-layout-dialect
 		engine.addDialect(new LayoutDialect());
+		//Custom Dialect
 		engine.addDialect(new BrewerDialect());
 		return engine;
 	}
@@ -91,6 +92,7 @@ public class WebConfig extends WebMvcConfigurerAdapter implements ApplicationCon
 	@Bean
 	public FormattingConversionService mvcConversionService() {
 		DefaultFormattingConversionService conversionService = new DefaultFormattingConversionService();
+		//Add some custom converters
 		conversionService.addConverter(new BeerStyleConverter());
 		
 		NumberStyleFormatter bigDecimalFormatter = new NumberStyleFormatter("#,##0.00");

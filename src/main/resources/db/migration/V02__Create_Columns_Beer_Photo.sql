@@ -1,0 +1,3 @@
+ALTER TABLE beer
+	ADD photo VARCHAR(150) NOT NULL,
+	ADD content_type VARCHAR(100) NOT NULL;
