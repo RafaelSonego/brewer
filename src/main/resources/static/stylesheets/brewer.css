@@ -52,3 +52,7 @@ COMPONENTS
     
     font-size: 500px;
 }
+
+.bw-required > .control-label:after {
+	content: "*"
+}

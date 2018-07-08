@@ -9,6 +9,6 @@ public class CityController {
 
 	@RequestMapping("/new")
 	public String newCity() {
-		return "beer/new-city";
+		return "city/new-city";
 	}
 }

@@ -20,7 +20,7 @@
 
 				<th:block th:include="fragment/messageErrorValidation"></th:block>
 
-				<div class="form-group" th:classappend="${#fields.hasErrors('name')}? has-error">
+				<div class="form-group bw-required" th:classappend="${#fields.hasErrors('name')}? has-error">
 					<label for="name" class="control-label">Style</label>
 					<input id="name" type="text" class="form-control" th:field="*{name}"  />
 				</div>

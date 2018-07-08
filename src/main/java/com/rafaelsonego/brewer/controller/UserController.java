@@ -9,7 +9,7 @@ public class UserController {
 	
 	@RequestMapping("/new")
 	public String newUser() {
-		return "beer/new-user";
+		return "user/new-user";
 	}
 
 }

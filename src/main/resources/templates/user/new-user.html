@@ -17,20 +17,20 @@
 		<div class="container-fluid">
 			<form method="POST" th:object="${user}" class="form-vertical  js-form-loading">
 
-				<div class="form-group">
-					<label for="name">Name</label>
+				<div class="form-group bw-required">
+					<label for="name" class="control-label">Name</label>
 					<input id="name" type="text" class="form-control" />
 				</div>
 
 				<div class="row">
 
-					<div class="col-sm-8 form-group">
-						<label for="email">Email</label>
+					<div class="col-sm-8 form-group bw-required">
+						<label for="email" class="control-label">Email</label>
 						<input id="email" type="text" class="form-control" />
 					</div>
 
-					<div class="col-sm-4 form-group">
-						<label for="birthday">Birthday</label>
+					<div class="col-sm-4 form-group bw-required">
+						<label for="birthday" class="control-label">Birthday</label>
 						<input id="birthday" type="text" class="form-control" />
 					</div>
 
@@ -38,18 +38,18 @@
 
 				<div class="row">
 
-					<div class="col-sm-4 form-group">
-						<label for="address">Address</label>
+					<div class="col-sm-4 form-group bw-required">
+						<label for="address bw-required" class="control-label">Address</label>
 						<input id="address" type="text" class="form-control" />
 					</div>
 
-					<div class="col-sm-4 form-group">
-						<label for="number">Number</label>
+					<div class="col-sm-4 form-group bw-required">
+						<label for="number" class="control-label">Number</label>
 						<input id="number" type="text" class="form-control" />
 					</div>
 
 					<div class="col-sm-4 form-group">
-						<label for="unit">Unit</label>
+						<label for="unit" class="control-label">Unit</label>
 						<input id="unit" type="text" class="form-control" />
 					</div>
 
@@ -57,17 +57,17 @@
 
 				<div class="row">
 
-					<div class="col-sm-4 form-group">
-						<label for="password">Password</label>
+					<div class="col-sm-4 form-group bw-required">
+						<label for="password" class="control-label">Password</label>
 						<input id="password" type="password" class="form-control" placeholder="Password" />
 					</div>
 
-					<div class="col-sm-4 form-group">
-						<label for="confirmPassword">Confirm your Password</label>
+					<div class="col-sm-4 form-group bw-required">
+						<label for="confirmPassword" class="control-label">Confirm your Password</label>
 						<input id="confirmPassword" type="password" class="form-control" placeholder="Confirm your password" />
 					</div>
 
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label class="control-label" for="status">Status</label>
 						<div>
 							<input type="checkbox" class="js-status" data-size="small" data-off-color="danger" 
@@ -77,8 +77,8 @@
 
 				</div>
 
-				<div class="form-group">
-					<label for="group">Groups</label>
+				<div class="form-group bw-required">
+					<label for="group" class="control-label">Groups</label>
 					<div>
 						<label class="checkbox-inline"> <input type="checkbox" value=""> Administrator </label> 
 						<label class="checkbox-inline"> <input type="checkbox" value=""> Vendor </label>

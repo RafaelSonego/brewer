@@ -9,7 +9,7 @@ public class ClientController {
 	
 	@RequestMapping("/new")
 	public String newClient() {
-		return "beer/new-client";
+		return "client/new-client";
 	}
 
 }
