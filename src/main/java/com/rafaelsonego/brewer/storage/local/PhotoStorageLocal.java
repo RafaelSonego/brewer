@@ -46,6 +46,15 @@ public class PhotoStorageLocal implements PhotoStorage {
 		return null;
 	}
 
+	@Override
+	public byte[] getTemporaryPhoto(String name) {
+		try {
+			return Files.readAllBytes(this.localPathTemp.resolve(name));
+		} catch (IOException e) {
+			throw new RuntimeException("Error get temporary photo", e);
+		}
+	}
+	
 	private void createFolder() {
 		try {
 			Files.createDirectories(this.localPath);
@@ -62,6 +71,7 @@ public class PhotoStorageLocal implements PhotoStorage {
 
 	private String renamePhotoName(String originPhotoName) {
 		return UUID.randomUUID().toString() + originPhotoName;
+		
 	}
 
 }

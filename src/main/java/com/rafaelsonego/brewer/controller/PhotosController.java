@@ -1,6 +1,8 @@
 package com.rafaelsonego.brewer.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +27,11 @@ public class PhotosController {
 		Thread thread = new Thread(new PhotoStorageRunnable(files, result, photoStorage));
 		thread.start();
 		return result;
+	}
+	
+	@GetMapping("/temp/{photoName:.*}")
+	public byte[] recoveryTemporaryPhoto(@PathVariable("photoName") String name) {
+		return photoStorage.getTemporaryPhoto(name);
 	}
 
 }
