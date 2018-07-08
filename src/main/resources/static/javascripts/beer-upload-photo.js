@@ -5,12 +5,12 @@ Brewer.UploadPhoto = (function() {
 	function UploadPhoto() {
 		this.inputPhotoName = $('input[name=photoName]');
 		this.inputContentType = $('input[name=photoContentType]');
-		
+
 		this.htmlPhotoBeerTemplate = $('#photo-beer').html();
 		this.template = Handlebars.compile(this.htmlPhotoBeerTemplate);
-		
+
 		this.containerBeerPhoto = $('.js-container-beer-photo');
-		
+
 		this.uploadDrop = $('#upload-drop');
 	}
 
@@ -25,6 +25,13 @@ Brewer.UploadPhoto = (function() {
 
 		UIkit.uploadSelect($('#upload-select'), settings);
 		UIkit.uploadDrop(this.uploadDrop, settings);
+
+		if (this.inputPhotoName.val()) {
+			onUploadComplete.call(this, {
+				name : this.inputPhotoName.val(),
+				contentyType : this.inputContentType.val()
+			});
+		}
 	}
 
 	function onUploadComplete(result) {
