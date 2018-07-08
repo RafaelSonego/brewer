@@ -14,7 +14,19 @@
 
 		<div class="page-header">
 			<div class="container-fluid">
-				<h1>New Beer</h1>
+				<div class="row">
+					<div class="col-sm-10">
+						<h1>New Beer</h1>
+					</div>
+					<div class="col-sm-2">
+						<div class="aw-page-header-controls">
+							<a class="btn btn-default" th:href="@{/beer/search}">
+								<i class="glyphicon glyphicon-plus-sign"></i>
+								<span class="hidden-xs hidden-sm">Search beer</span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -80,8 +92,7 @@
 						<div>
 							<th:block th:each="origin : ${listOrigin}">
 								<div class="radio radio-inline">
-									<input type="radio" th:id="|id_${origin}|" name="${origin.description}" th:value="${origin}"
-										th:field="*{origin}">
+									<input type="radio" th:id="|id_${origin}|" name="origin" th:value="${origin}" th:field="*{origin}">
 									<label th:for="|id_${origin}|" th:text="${origin.description}" class="control-label"></label>
 								</div>
 							</th:block>
@@ -91,7 +102,7 @@
 
 				<div class="row">
 					<div class="col-sm-3 form-group bw-required" brewer:validatefieldhaserror="value">
-						<label for="value" class="control-label">Value</label>
+						<label for="value" class="control-label">Unit Value</label>
 						<div class="input-group">
 							<div class="input-group-addon">$</div>
 							<input id="value" type="text" class="form-control js-decimal" th:field="*{value}" />

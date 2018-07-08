@@ -8,4 +8,8 @@ public interface PhotoStorage {
 
 	byte[] getTemporaryPhoto(String name);
 	
+	byte[] getPhoto(String name);
+
+	void moveToPermanentStorage(String photoName);
+	
 }

@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
-	<head>
-		<title>Sample Page</title>
-	</head>
-	<body>
-		<section layout:fragment="content">Test content usgin thymeleaf layout decorator</section>
-	</body>
-	
+<head>
+<title>Sample Page</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="page-header">
+			<div class="container-fluid">
+				<h1>Sample Page</h1>
+			</div>
+		</div>
+		Test content usgin thymeleaf layout decorator
+	</section>
+</body>
+
 </html>

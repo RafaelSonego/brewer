@@ -14,6 +14,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.rafaelsonego.brewer.storage.PhotoStorage;
 
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.name.Rename;
+
 public class PhotoStorageLocal implements PhotoStorage {
 
 	private static final Logger logger = LoggerFactory.getLogger(PhotoStorageLocal.class);
@@ -55,6 +58,26 @@ public class PhotoStorageLocal implements PhotoStorage {
 		}
 	}
 	
+	@Override
+	public byte[] getPhoto(String name) {
+		try {
+			return Files.readAllBytes(this.localPath.resolve(name));
+		} catch (IOException e) {
+			throw new RuntimeException("Error get photo", e);
+		}
+	}
+
+	
+	@Override
+	public void moveToPermanentStorage(String photoName) {
+		try {
+			Files.move(this.localPathTemp.resolve(photoName), this.localPath.resolve(photoName));
+			Thumbnails.of(this.localPath.resolve(photoName).toString()).size(40, 68).toFiles(Rename.PREFIX_DOT_THUMBNAIL);
+		} catch (IOException e) {
+			throw new RuntimeException("Error move photo", e);
+		}
+	}
+	
 	private void createFolder() {
 		try {
 			Files.createDirectories(this.localPath);
@@ -71,7 +94,6 @@ public class PhotoStorageLocal implements PhotoStorage {
 
 	private String renamePhotoName(String originPhotoName) {
 		return UUID.randomUUID().toString() + originPhotoName;
-		
 	}
 
 }
