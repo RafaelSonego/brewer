@@ -14,14 +14,14 @@
 		<div class="container-fluid">
 			<form method="POST" th:object="${client}" class="form-vertical  js-form-loading">
 
-				<div class="form-group">
+				<div class="form-group bw-required">
 					<label for="name">Name</label>
 					<input id="name" type="text" class="form-control" />
 				</div>
 
 				<div class="row">
 
-					<div class="col-lg-4 col-sm-6 form-group">
+					<div class="col-lg-4 col-sm-6 form-group bw-required">
 						<label for="origin">Type of Client</label>
 						<div>
 							<div class="radio radio-inline">
@@ -35,8 +35,8 @@
 						</div>
 					</div>
 
-					<div class="col-sm-8 form-group">
-						<label for="clientDocument">CPF/CNPJ</label>
+					<div class="col-sm-8 form-group bw-required">
+						<label for="clientDocument">ID</label>
 						<input id="clientDocument" type="text" class="form-control" />
 					</div>
 
@@ -49,7 +49,7 @@
 						<input id="cellPhone" type="text" class="form-control" />
 					</div>
 
-					<div class="col-sm-8 form-group">
+					<div class="col-sm-8 form-group bw-required">
 						<label for="email">Email</label>
 						<input id="email" type="text" class="form-control" />
 					</div>
@@ -58,12 +58,12 @@
 
 				<div class="row">
 
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="address">Address</label>
 						<input id="address" type="text" class="form-control" />
 					</div>
 
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="number">Number</label>
 						<input id="number" type="text" class="form-control" />
 					</div>
@@ -77,19 +77,19 @@
 
 				<div class="row">
 
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="zipCode">Zip Code</label>
 						<input id="zipCode" type="text" class="form-control" />
 					</div>
 
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="state">State</label>
 						<select id="state" class="form-control">
 							<option value="">Select</option>
 						</select>
 					</div>
 
-					<div class="col-sm-4 form-group">
+					<div class="col-sm-4 form-group bw-required">
 						<label for="province">Province</label>
 						<select id="province" class="form-control">
 							<option value="">Select</option>

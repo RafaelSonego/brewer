@@ -27,7 +27,7 @@ public class BeerStyleController {
 
 	@RequestMapping("/new")
 	public ModelAndView redirectNewBeerStyle(BeerStyle beerStyle) {
-		ModelAndView mv = new ModelAndView("beer/new-style");
+		ModelAndView mv = new ModelAndView("style/new-style");
 		mv.addObject(beerStyle);
 		return mv;
 	}

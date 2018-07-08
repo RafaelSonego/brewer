@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/default-layout">
+<head>
+<title>Search Beer</title>
+</head>
+<body>
+	<section layout:fragment="content">
+		<div class="page-header">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-sm-10">
+						<h1>Search Beer</h1>
+					</div>
+					<div class="col-sm-2">
+						<div class="aw-page-header-controls">
+							<a class="btn btn-default" th:href="@{/beer/new}">
+								<i class="glyphicon glyphicon-plus-sign"></i>
+								<span class="hidden-xs hidden-sm">New beer</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<form method="GET">
+				<div class="row">
+					<div class="form-group  col-sm-6">
+						<label class="control-label" for="sku">SKU</label>
+						<input type="text" class="form-control" id="sku" autofocus="autofocus" />
+					</div>
+
+					<div class="form-group  col-sm-6">
+						<label class="control-label" for="name">Name</label>
+						<input type="text" class="form-control" id="name" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group  col-sm-6">
+						<label class="control-label" for="style">Style</label>
+						<select id="style" class="form-control">
+							<option value="">All Styles</option>
+							<option th:each="style : ${listStyle}" th:value="${style.id}" th:text="${style.name}"></option>
+						</select>
+					</div>
+
+					<div class="form-group  col-sm-6">
+						<label class="control-label" for="taste">Taste</label>
+						<select id="taste" class="form-control">
+							<option value="">All Tastes</option>
+							<option th:each="taste : ${listTaste}" th:value="${taste}" th:text="${taste.description}"></option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group  col-sm-6">
+						<label class="control-label">Origin</label>
+						<div>
+							<th:block th:each="origin : ${listOrigin}">
+								<div class="radio  radio-inline">
+									<input th:id="|id_${origin}|" type="radio" th:value="${origin}" name="origin" />
+									<label th:for="|id_${origin}|" th:text="${origin.description}"></label>
+								</div>
+							</th:block>
+							<div class="radio  radio-inline">
+								<input id="todasOrigens" type="radio" th:checked="*{origin} == null" name="origin" />
+								<label for="todasOrigens">All</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6  form-group">
+						<label for="valueStart">Unit Value</label>
+						<div class="form-inline">
+							<input type="text" class="form-control  aw-form-control-inline-sm  js-decimal" id="valueStart" />
+							<label for="valueUntil" class="aw-form-label-between"> - </label>
+							<input type="text" class="form-control  aw-form-control-inline-sm  js-decimal" id="valueUntil" />
+						</div>
+					</div>
+				</div>
+
+				<button type="submit" class="btn  btn-primary">Search</button>
+			</form>
+
+			<div class="table-responsive  bw-table">
+				<table class="table  table-hover">
+					<thead>
+						<tr>
+							<th class="table-beer-col-photo"></th>
+							<th class="table-beer-col-sku">SKU</th>
+							<th class="table-beer-col-name">Name</th>
+							<th class="table-beer-col-style">Style</th>
+							<th class="table-beer-col-origin">Origin</th>
+							<th class="table-beer-col-value">Value</th>
+							<th class="table-beer-col-action"></th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr th:each="beer : ${listBeer}">
+							<td class="text-center">
+								<img th:src="@{/photos/thumbnail.{photoName}(photoName=${beer.photoNameOrMock})}" class="img-responsive" />
+							</td>
+							<td class="text-center" th:text="${beer.sku}">AA1234</td>
+							<td th:text="${beer.name}">Stella</td>
+							<td th:text="${beer.beerStyle.name}">Lager</td>
+							<td th:text="${beer.origin.description}">International</td>
+							<td class="text-right" th:text="|$ ${beer.value}|">$ 3.00</td>
+							<td class="text-center">
+								<a class="btn  btn-link  btn-xs" title="Edit">
+									<i class="glyphicon glyphicon-pencil"></i>
+								</a>
+								<a class="btn  btn-link  btn-xs" title="Delete">
+									<i class="glyphicon glyphicon-remove"></i>
+								</a>
+							</td>
+						</tr>
+						<tr th:if="${#lists.isEmpty(listBeer)}">
+							<td colspan="7">List of the beers is empty!</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</section>
+</body>
+</html>

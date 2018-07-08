@@ -52,3 +52,56 @@ COMPONENTS
     
     font-size: 500px;
 }
+
+.bw-required > .control-label:after {
+	content: "*"
+}
+
+
+/* Tabele */
+.bw-table {
+	margin-top: 15px;
+}
+
+.bw-table table tr th {
+	border-bottom-width: 1px;
+}
+
+.bw-table table tr td {
+    border-top: none;
+    border-bottom: 1px solid #e7eaec;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/* Table Columns*/
+.table-beer-col-photo {
+	min-width: 50px;
+	width: 50px
+}
+
+.table-beer-col-sku {
+	width: 90px;
+	text-align: center;
+}
+
+.table-beer-col-name {
+	
+}
+
+.table-beer-col-style {
+	width: 120px;
+}
+
+.table-beer-col-origin {
+	width: 100px;
+}
+
+.table-beer-col-value {
+	width: 100px;
+	text-align: right;
+}
+
+.table-beer-col-action {
+	width: 80px;
+}

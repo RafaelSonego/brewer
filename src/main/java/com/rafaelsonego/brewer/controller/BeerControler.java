@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.rafaelsonego.brewer.model.Beer;
 import com.rafaelsonego.brewer.model.Origin;
 import com.rafaelsonego.brewer.model.Taste;
+import com.rafaelsonego.brewer.repository.BeerRepository;
 import com.rafaelsonego.brewer.repository.BeerStyleRepository;
 import com.rafaelsonego.brewer.service.BeerService;
 import com.rafaelsonego.brewer.service.exception.BeerExpetion;
@@ -23,6 +25,8 @@ public class BeerControler {
 
 	@Autowired
 	private BeerStyleRepository beerStyleRepository;
+	@Autowired
+	private BeerRepository beerRepository;
 
 	@Autowired
 	private BeerService beerService;
@@ -70,6 +74,16 @@ public class BeerControler {
 
 		attributes.addFlashAttribute("message", "Success");
 		return new ModelAndView("redirect:/beer/new");
+	}
+	
+	@GetMapping("/search")
+	public ModelAndView searchBeer() {
+		ModelAndView mv = new ModelAndView("beer/search-beer");
+		mv.addObject("listTaste", Taste.values());
+		mv.addObject("listStyle", beerStyleRepository.findAll());
+		mv.addObject("listOrigin", Origin.values());
+		mv.addObject("listBeer", beerRepository.findAll());
+		return mv;
 	}
 
 }

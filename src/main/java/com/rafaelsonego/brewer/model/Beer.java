@@ -22,6 +22,7 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.StringUtils;
 
 import com.rafaelsonego.brewer.validations.TextFieldValidation;
 
@@ -200,6 +201,10 @@ public class Beer {
 	public void setPhotoName(String photoName) {
 		this.photoName = photoName;
 	}
+
+	public String getPhotoNameOrMock() {
+		return StringUtils.isEmpty(photoName)? "missing.png" : photoName;
+	}	
 
 	@Override
 	public int hashCode() {

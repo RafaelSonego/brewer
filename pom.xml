@@ -55,6 +55,9 @@
 
 		<!-- Jackson Core Version -->
 		<jackson-core-version>2.7.5</jackson-core-version>
+		
+		<!-- thumbnailator-version -->
+		<thumbnailator-version>0.4.8</thumbnailator-version>
 	</properties>
 
 	<build>
@@ -211,6 +214,14 @@
 			<artifactId>jackson-databind</artifactId>
 			<version>${jackson-core-version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/net.coobird/thumbnailator -->
+		<dependency>
+		    <groupId>net.coobird</groupId>
+		    <artifactId>thumbnailator</artifactId>
+		    <version>${thumbnailator-version}</version>
+		</dependency>
+				
 
 	</dependencies>
 
